@@ -1,9 +1,13 @@
 {
     "name": "attitude",
-    "description": "Calculate boat attitude from gyros and accelerometers",
-    "version": "0.0.1",
-    "private": true,
+    "description": "homegrownmarine.com module to calculate boat attitude from mpu6050.",
+    "version": "0.1.0",
     "main": "./app.js",
+    "homepage": "http://homegrownmarine.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/HomegrownMarine/boat_computer.git"
+    },
     "dependencies": {
         "express": ">= 3.4.8",
         "lodash": "^2.4.1",

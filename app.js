@@ -39,15 +39,15 @@ exports.load = function(server, boatData, settings) {
     }
 
     var getAngles = function() {
-        var heel = _.reduce(heels, function(s, n) { return s + n; }) / heel.length;
+        var heel = _.reduce(heels, function(s, n) { return s + n; }) / heels.length;
         var pitch = _.reduce(pitches, function(s, n) { return s + n; }) / pitches.length;
 
         return [heel, pitch];
     }
 
-    //@ 50Hz, sample
+    //@ 100Hz, sample
     setInterval(function() {
-        var acceleration = mpu6050.getAcceleration();
+        var acceleration = mpu.getAcceleration();
 
         var angles = getAnglesFromAccelerometer({
             x: acceleration[0] / 16384,
@@ -57,18 +57,17 @@ exports.load = function(server, boatData, settings) {
 
         updateAngles(angles[0], angles[1]);
 
-    }, 20);
+    }, 10);
 
     //@ 1Hz, broadcast trim 
     setInterval(function() {
 
         var angles = getAngles();
-        console.info('accels', mpu6050.getAcceleration(), getAngles())
 
         boatData.broadcast({
             type: 'xhr',
-            heel: angles[0],
-            pitch: angles[1]
+            heel: Math.abs(angles[0]).toFixed(1),
+            pitch: angles[1].toFixed(1)
         });
     }, 1000);
 };
