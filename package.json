@@ -9,12 +9,16 @@
         "url": "https://github.com/HomegrownMarine/boat_computer.git"
     },
     "dependencies": {
-        "express": ">= 3.4.8",
         "lodash": "^2.4.1",
-        "moment": "2.5.1",
-        "mpu6050": "0.1.2"
+        "mpu6050": "0.1.2",
+        "express": "3.4.8"
     },
     "devDependencies": {
-        "chai": "*"
+        "chai": "*",
+        "chai": "*",
+        "grunt": "^0.4.5",
+        "grunt-contrib-jshint": "^0.10.0",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-mocha-test": "^0.11.0"
     }
 }

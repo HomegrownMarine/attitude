@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Heel Zero</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!-- http://diveintohtml5.info/offline.html -->
+    <style type="text/css">
+    .button {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        box-sizing: border-box;
+        display: block;
+        background-color: #ddd;
+        border-radius: 12px;
+    }
+    body {
+        margin: 5px;
+    }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <a href="#" class="button zero">ZERO</a>
+    </div>
+    <script src="/lib/jquery.js"></script>
+    <script>
+    $(function() {
+        //load initial data
+        // $.ajax({
+        //         dataType: "json",
+        //         url: '/attitude/zero',
+        //         cache: false,
+        //         success: function(zero) { 
+        //             _.each(function(k,v) {
+        //                 $('[name='+k+']').val(v);
+        //             });
+        //         }
+        //     });
+        function setZero() {
+            
+        }
+
+        $('.zero.button').click(function() {
+            $.ajax({
+                dataType: "json",
+                url: "/attitude/zero",
+                method: "post",
+                data: "",
+                type: "POST",
+                success: function(newZero) {
+
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
