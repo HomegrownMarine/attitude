@@ -9,16 +9,11 @@
         "url": "https://github.com/HomegrownMarine/boat_computer.git"
     },
     "dependencies": {
-        "lodash": "^2.4.1",
-        "mpu6050": "0.1.2",
-        "express": "3.4.8"
+        "node-bno550": "git+https://github.com/gradymorgan/node-BNO055.git",
+        "async": "^1.4.2"
     },
     "devDependencies": {
-        "chai": "*",
-        "chai": "*",
-        "grunt": "^0.4.5",
-        "grunt-contrib-jshint": "^0.10.0",
-        "grunt-contrib-watch": "^0.6.1",
-        "grunt-mocha-test": "^0.11.0"
+        "gulp": "^3.6.0",
+        "gulp-eslint": "^1.0.0"
     }
 }
