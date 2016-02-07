@@ -8,20 +8,20 @@ var async = require('async');
 
 exports.load = function(server, boatData, settings) {
     var zero = settings.get('attitude.zero') || {heel: 0, pitch: 0};
-    var updateZero = function(newZero) {
+    function updateZero(newZero) {
         zero = newZero;
-
         settings.set('attitude.zero', newZero);
     };
+    var declination = [];
 
-    var updateCalibration = function(calibration) {
+    function updateCalibration(calibration) {
         settings.set('attitude.calibration', calibration);
 
         boatData.broadcast({
             type: 'DATA',
             subtype: 'IMU:CAL',
             values: [
-                results?JSON.stringify(results):'undefined'
+                calibration?JSON.stringify(calibration):'undefined'
             ]
         });
     };
@@ -88,7 +88,7 @@ exports.load = function(server, boatData, settings) {
         //for now, we're logging it to see how it changes during sailing.  
         setInterval(function() {
             if ( !requestActive && 
-                 latest && latest.calibrationStatus.systemStatus == 3) {
+                 latest && latest.calibrationStatus.systemStatus >= 2) {
                 
                 requestActive = true;
                 imu.getCalibrationData(function(err, results) {
