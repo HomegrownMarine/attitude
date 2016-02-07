@@ -57,7 +57,13 @@ exports.load = function(server, boatData, settings) {
                 results.gravity.y,
                 results.gravity.z
             ]
-        });    
+        });
+
+        boatData.broadcast({
+            'heel': results.euler.roll,
+            'pitch':results.euler.pitch,
+            'hdg': results.euler.heading
+        });
     }
 
     function startTimers() {
