@@ -15,7 +15,9 @@ exports.load = function(server, boatData, settings) {
     var declination = [];
 
     function updateCalibration(calibration) {
-        settings.set('attitude.calibration', calibration);
+        if (latest && latest.calibrationStatus.systemStatus >= 2) {
+            settings.set('attitude.calibration', calibration);
+        }
 
         boatData.broadcast({
             type: 'DATA',
@@ -87,19 +89,17 @@ exports.load = function(server, boatData, settings) {
         //every so often update the calibration data
         //for now, we're logging it to see how it changes during sailing.  
         setInterval(function() {
-            if ( !requestActive && 
-                 latest && latest.calibrationStatus.systemStatus >= 2) {
-                
-                requestActive = true;
-                imu.getCalibrationData(function(err, results) {
-                    if (results) {
-                        updateCalibration(results);
-                    }
+            if ( requestActive ) return;
 
-                    requestActive = false;
-                });
+            requestActive = true;
+            imu.getCalibrationData(function(err, results) {
+                if (results) {
+                    updateCalibration(results);
+                }
 
-            }
+                requestActive = false;
+            });
+
         }, 30000);
     }
 
