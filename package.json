@@ -6,7 +6,7 @@
     "homepage": "http://homegrownmarine.com",
     "repository": {
         "type": "git",
-        "url": "https://github.com/HomegrownMarine/boat_computer.git"
+        "url": "https://github.com/HomegrownMarine/attitude.git"
     },
     "dependencies": {
         "node-bno550": "git+https://github.com/gradymorgan/node-BNO055.git",
