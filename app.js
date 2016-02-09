@@ -3,6 +3,7 @@
 //! version : 0.2
 //! homegrownmarine.com
 
+var express = require('express');
 var BNO055 = require('node-bno055');
 var async = require('async');
 

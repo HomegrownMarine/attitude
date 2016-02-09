@@ -9,6 +9,7 @@
         "url": "https://github.com/HomegrownMarine/attitude.git"
     },
     "dependencies": {
+        "express": "3.4.8",
         "node-bno550": "git+https://github.com/gradymorgan/node-BNO055.git",
         "async": "^1.4.2"
     },
